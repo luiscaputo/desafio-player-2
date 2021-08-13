@@ -32,7 +32,7 @@ class Company{
             titular_company
           });
           return saveCompany
-          return getCNPJ.data
+          //return getCNPJ
         }else
         {
           throw new Error("CNPJ inexistente!")
