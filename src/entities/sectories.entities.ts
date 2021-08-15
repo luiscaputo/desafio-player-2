@@ -3,7 +3,7 @@ import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from 
 @Entity("sectories")
 class Sectories{
   @PrimaryColumn()
-    readonly id: number;
+    readonly id: 1;
   @Column()
     name: string;
   @Column()
@@ -12,6 +12,11 @@ class Sectories{
     created_at: Date;
   @UpdateDateColumn()
     updated_at: Date;
+   constructor(){
+     if(!this.id){
+       this.id = 1;
+     }
+   }
 }
 
 export { Sectories }

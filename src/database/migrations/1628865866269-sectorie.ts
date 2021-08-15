@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {IsNull, MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class sectorie1628865866269 implements MigrationInterface {
 
@@ -11,7 +11,7 @@ export class sectorie1628865866269 implements MigrationInterface {
                         name: "id",
                         type: "int",
                         isPrimary: true,
-                        isGenerated: true
+                        isGenerated: true,
                     },
                     {
                         name: "name",

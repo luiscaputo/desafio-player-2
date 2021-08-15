@@ -11,7 +11,7 @@ class Sectorie{
     try{
       const alreadExistsSectorie = await sectorieRepositories.findOne({name})
       if(alreadExistsSectorie){
-        return false
+        return "Esse sector já existe"
       }
       // const createSectorie = sectorieRepositories.create({name, description});
       const createSectorie = await sectorieRepositories.save({

@@ -3,7 +3,7 @@
   "host": "localhost",
   "username": "root",
   "password": "",
-  "database": "desafio_player_2",
+  "database": "desafioPlayer2",
   "synchronize": true,
   "logging": false,
   "migrations": ["src/database/migrations/*.ts"],
