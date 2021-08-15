@@ -1,8 +1,8 @@
-import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity("industry")
 class Industry{
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
     readonly id: number;
   @Column()
     name: string;

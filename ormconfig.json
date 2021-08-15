@@ -12,5 +12,4 @@
     "migrationCli": "src/database/migrations",
     "entity": "src/entities"
   }
-
 }

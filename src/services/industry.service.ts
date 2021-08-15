@@ -8,16 +8,16 @@ interface IIndustry{
 
 class Industry{
   async handle({ name, description }: IIndustry) {
-    const sectorieRepositorie = getCustomRepository(IndustryRepositories)
+    const industryRepositorie = getCustomRepository(IndustryRepositories)
     
-    const alreadExistsIndustry = await sectorieRepositorie.findOne({name})
+    const alreadExistsIndustry = await industryRepositorie.findOne({name})
     if(alreadExistsIndustry){
-       throw new Error('Esse sector já existe!')
+       throw new Error('Esse segmento já existe!')
     }
     else
     {
-      const createIndustry = sectorieRepositorie.create({name, description});
-      await sectorieRepositorie.save(createIndustry)
+      const createIndustry = industryRepositorie.create({name, description});
+      await industryRepositorie.save(createIndustry)
       return createIndustry;
     }
   }

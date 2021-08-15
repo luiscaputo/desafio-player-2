@@ -3,6 +3,8 @@ import express, { json } from "express";
 import { router } from "./routes";
 import "./database"
 
+import './database'
+
 const app = express()
 
 app.use(express.json());

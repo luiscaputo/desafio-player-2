@@ -1,9 +1,9 @@
-import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity("sectories")
 class Sectories{
-  @PrimaryColumn()
-    readonly id: 1;
+  @PrimaryGeneratedColumn()
+    readonly id: number;
   @Column()
     name: string;
   @Column()
@@ -12,11 +12,14 @@ class Sectories{
     created_at: Date;
   @UpdateDateColumn()
     updated_at: Date;
-   constructor(){
-     if(!this.id){
-       this.id = 1;
-     }
-   }
+  //   constructor(){
+  //    let sum = 1;
+  //      for(let i=1; i <= 999999; i++){
+  //        if(!this.id)
+  //            sum += i;
+  //           this.id = sum
+  //      }
+  // }
 }
 
 export { Sectories }
