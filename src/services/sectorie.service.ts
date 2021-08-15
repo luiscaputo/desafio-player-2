@@ -6,6 +6,11 @@ interface ISectories {
   name: string,
   description: string
 }
+interface IUSectorie{
+  id: number,
+  name: string,
+  description: string
+}
 
 class Sectorie{
   async execute({ name, description }: ISectories) {
@@ -53,6 +58,26 @@ class Sectorie{
     const sectorieRepositories = getCustomRepository(SectorieRepositorie);
     const showSectorieById = sectorieRepositories.findByIds(id);
     return showSectorieById;
+  }
+  async update({ id, name, description }: IUSectorie){
+    const sectorieRepositories = getCustomRepository(SectorieRepositorie);
+    const alreadyExistsId = await sectorieRepositories.findOne({id});
+    
+    if(!alreadyExistsId){
+      return "Esse sector não existe!"
+    }else 
+    {
+      const sectorieUpdate = sectorieRepositories
+      .createQueryBuilder()
+      .update()
+      .set({
+        name: name,
+        description: description
+      })
+      .where("id = :id", {id:id})
+      .execute();
+      return sectorieUpdate;
+    }
   }
 }
 export { Sectorie }

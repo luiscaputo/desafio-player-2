@@ -41,5 +41,15 @@ class SectorController{
       return response.status(400).json({success: false, message: e});
     }
   }
+  async handleUpdate(request: Request, response: Response){
+    try{
+      const { id, name, description } = request.body;
+      const sectorieService = new Sectorie();
+      const updateSectorie = await sectorieService.update({id, name, description});
+      return response.status(200).json({success: true, message: "Sector Actualizado"});
+    }catch(e){
+      return response.status(400).json({success: false, message: e});
+    }
+  }
 }
 export { SectorController }
