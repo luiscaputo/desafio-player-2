@@ -7,7 +7,7 @@ interface IIndustry{
 }
 
 class Industry{
-  async handle({ name, description }: IIndustry) {
+  async execute({ name, description }: IIndustry) {
     const industryRepositorie = getCustomRepository(IndustryRepositories)
     
     const alreadExistsIndustry = await industryRepositorie.findOne({name})
@@ -19,6 +19,21 @@ class Industry{
       const createIndustry = industryRepositorie.create({name, description});
       await industryRepositorie.save(createIndustry)
       return createIndustry;
+    }
+  }
+  async remove(id){
+    const industryRepositorie = getCustomRepository(IndustryRepositories);
+    const ifExists = industryRepositorie.findOne({id});
+    if(!ifExists){
+      return "Esse Sector não existe";
+    }
+    else {
+      const deleteIndustry = await industryRepositorie
+        .createQueryBuilder()
+        .delete()
+        .where("id = :id", {id: id})
+        .execute();
+      return deleteIndustry;
     }
   }
 }

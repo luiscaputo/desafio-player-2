@@ -43,7 +43,6 @@ class Sectorie{
       const deleteSectorie = await sectorieRepositories
         .createQueryBuilder()
         .delete()
-        .from(Sectories)
         .where("id = :id", {id: id})
         .execute();
       return deleteSectorie;
