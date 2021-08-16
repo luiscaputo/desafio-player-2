@@ -2,7 +2,6 @@ import { getCustomRepository } from "typeorm"
 import axios from "axios"
 import { CompanyRepositories } from "../repositories/company.repositories";
 import { IndustryRepositories } from "../repositories/insdustry.repositories";
-import { json, response } from "express";
 import { SectorieRepositorie } from "../repositories/sectories.repositories";
 
 interface ICompany{
@@ -103,7 +102,8 @@ class Company{
     
     if(!alreadyExistsId){
       return "Esse sector não existe!"
-    }else 
+    }
+    else 
     {
       const companyUpdate = companyRepositories
       .createQueryBuilder()

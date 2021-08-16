@@ -1,0 +1,69 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API - Desafio Player 2 - Cadastro de Empresas",
+        "description": "Api de desafio para o lugar de dev pleno nodejs na player 2, conciste na disponibilização de endpoints para cadastro, listagem, exclusão e actualização e empresas e outras entidades na api",
+        "termsOfServices": "",
+        "contacts": {
+            "email": "luiscaputo15@gmail.com",
+            "gitHub": "luiscaputo",
+            "whatshApp": "+244 995154193"
+        },
+        "version": "1.0.0"
+    },
+    "servers": {
+        "url": "http://localhost:8080",
+        "description": "API teste"
+    },
+    "paths": {
+        "/create-users": {
+            "post": {
+                "summary": "Cadastro de Usuário",
+                "description": "Essa é a rota responsável por cadastrar usuários na aplicação",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            },
+                            "examples": {
+                                "produts": {
+                                    "values": {
+                                        "username": "luiscaputo",
+                                        "email": "luiscaputo15@gmail.com",
+                                        "password": "teste123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "components": {
+            "schemas": {
+                "user": {
+                    "type": "object",
+                    "properties": {
+                        "username": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "Date"
+                        },
+                        "updated_at": {
+                            "type": "Date"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

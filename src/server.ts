@@ -1,13 +1,18 @@
-import "typeorm"
 import express, { json } from "express";
+import swaggerUi from "swagger-ui-express";
 import { router } from "./routes";
-import "./database"
+import { AuthLogin } from "./middleweres/auth";
+import swaggerDocs from "./swagger.json";
+import "./database";
 
-import './database'
 
 const app = express()
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.use(express.json());
+app.use(AuthLogin);
+app.use("/v1", router);
 app.use(router);
 
 app.listen(8080, () => console.log("Server is running"));

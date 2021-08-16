@@ -21,10 +21,10 @@ class Autenticate{
     }
 
     const token = sign(
-      {id: user.id},
+      {id: user.id, email: user.email},
       "desafioPlayer2Teste"
       // expiresIn: "1d"
-    );
+    )
     return token;
   }
 }

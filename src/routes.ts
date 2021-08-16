@@ -1,9 +1,11 @@
-import { Router } from "express";
+import { application, Router } from "express";
 import { AuthenticateUserController } from "./controllers/authenticate.controller";
 import { CompanyController } from "./controllers/company.controller";
 import { IndustryController } from "./controllers/industry.controller";
 import { SectorController } from "./controllers/sector.controller"
 import { UsersController } from "./controllers/users.controller";
+import "./middleweres/auth";
+// import { AuthLogin } from "./middleweres/auth";
 
 const router = Router();
 //controllers
