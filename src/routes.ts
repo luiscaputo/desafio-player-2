@@ -13,6 +13,10 @@ const companyController = new CompanyController();
 const usersController = new UsersController();
 const authenticateUserController = new AuthenticateUserController();
 
+//Home 
+router.get('/', (_, res) => {
+  res.send({ message: 'Welcome to Player - 2 challenge' });
+});
 //users
 router.post("/login", authenticateUserController.handle);
 router.post('/users-create', usersController.handleCreate);
