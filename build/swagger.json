@@ -1,0 +1,323 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API - Desafio Player 2 - Cadastro de Empresas",
+        "description": "Api de desafio para o lugar de dev pleno nodejs na player 2, conciste na disponibilização de endpoints para cadastro, listagem, exclusão e actualização e empresas e outras entidades na api",
+        "termsOfService": "",
+        "contact": {
+            "email": "luiscaputo15@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/v1",
+            "description": "URL base da API - Teste"
+        }
+    ],
+    "paths": {
+        "/users-create": {
+            "post": {
+                "summary": "Cadastro de Usuário",
+                "description": "Essa é a rota responsável por cadastrar usuários na aplicação",
+                "tags": ["Users"],
+                "security": [{ "bearerAuth": [] }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            },
+                            "example": {
+                                "user": {
+                                    "values": {
+                                        "id": "0",
+                                        "username": "luiscaputo",
+                                        "email": "luiscaputo15@gmail.com",
+                                        "password": "teste123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Esse Usuário Já Exist!"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "login",
+                "description": "Rota para logar na aplicação",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            },
+                            "example": {
+                                "user": {
+                                    "values": {
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Usuário/Password Errada"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/user"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company-create": {
+            "post": {
+                "description": "Cadastro de Empresas",
+                "summary": "Cadastro de Usuário",
+                "tags": ["Company"],
+                "security": [{ "bearerAuth": [] }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/company"
+                            },
+                            "example": {
+                                "company": {
+                                    "values": {
+                                        "name": "teste",
+                                        "sector_id": "4",
+                                        "industry_id": "1",
+                                        "CNPJ": "19131243000197",
+                                        "CNAE": "1234",
+                                        "titular_company": "teste"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Essa Empresa Já Existe!"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/company"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company-all": {
+            "get": {
+                "summary": "Listagem de Todas as Empresas Cadastradas",
+                "description": "Listagem de Todas as Empresas Cadastradas",
+                "tags": ["Company"],
+                "security": [{ "bearerAuth": [] }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/company"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company-show-by-id/{id}": {
+            "get": {
+                "summary": "Busca de Uma empresa por ID",
+                "description": "Busca de Uma empresa por ID",
+                "tags": ["Company"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                    {
+                        "id": "id",
+                        "in": "path",
+                        "description": "ID da empresa para busca",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company-update": {
+            "put": {
+                "summary": "Atualização de Uma Empresa",
+                "description": "Atualização de Uma Empresa",
+                "tags": ["Company"],
+                "security": [{ "bearerAuth": [] }],
+                "requestBody": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/company"
+                        },
+                        "example": {
+                            "company": {
+                                "id": "0",
+                                "name": "teste",
+                                "sector_id": "3",
+                                "titular_company": "luiscaputo"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company-delete/{id}": {
+            "delete": {
+                "summary": "Exclusão de uma empresa",
+                "description": "exclusão de uma empresa",
+                "tags": ["Company"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                    {
+                        "id": "id",
+                        "in": "path",
+                        "description": "ID da empresa para remover",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "user": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "company": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "sector_id": {
+                        "type": "number"
+                    },
+                    "industry_id": {
+                        "type": "number"
+                    },
+                    "CNPJ": {
+                        "type": "string"
+                    },
+                    "CNAE": {
+                        "type": "string"
+                    },
+                    "titular_company": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "securitySchemes": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+    }
+}
