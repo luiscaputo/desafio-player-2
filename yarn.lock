@@ -1217,6 +1217,11 @@ tsc-init@^2.1.0:
   resolved "https://registry.yarnpkg.com/tsc-init/-/tsc-init-2.1.0.tgz#63ee7759fa8b9a5a4094f1a6819e1b396319c679"
   integrity sha512-0hKc/Qdf/fi2AAmJejMSfXykwfP2MJXL6lbkA5qzMPUUurj8or7w30I/jTa86i2Ixpp2g7WXOgKWoT39MGXFew==
 
+tsc@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tsc/-/tsc-2.0.3.tgz#037fe579e3bd67a5cbdaa604b43c6c1991b04bef"
+  integrity sha512-SN+9zBUtrpUcOpaUO7GjkEHgWtf22c7FKbKCA4e858eEM7Qz86rRDpgOU2lBIDf0fLCsEg65ms899UMUIB2+Ow==
+
 tsconfig@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/tsconfig/-/tsconfig-7.0.0.tgz#84538875a4dc216e5c4a5432b3a4dec3d54e91b7"

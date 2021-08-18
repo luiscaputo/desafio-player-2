@@ -15,4 +15,6 @@ app.use(AuthLogin);
 app.use("/v1", router);
 app.use(router);
 
-app.listen(8080, () => console.log("Server is running"));
+const PORT = process.env.PORT || 8080
+
+app.listen(PORT, () => console.log("Server is running"));
