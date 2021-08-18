@@ -5,6 +5,7 @@ import { IndustryController } from "./controllers/industry.controller";
 import { SectorController } from "./controllers/sector.controller"
 import { UsersController } from "./controllers/users.controller";
 import "./middleweres/auth";
+import { AuthLogin } from "./middleweres/auth";
 // import { AuthLogin } from "./middleweres/auth";
 
 const router = Router();
@@ -23,19 +24,19 @@ router.get('/', (_, res) => {
 router.post("/login", authenticateUserController.handle);
 router.post('/users-create', usersController.handleCreate);
 //crud sectorie
-router.post('/sectorie-create', sectorieController.handleCreate);
-router.delete('/sectorie-delete/:id', sectorieController.handleRemove);
-router.get('/sectorie-all', sectorieController.handleShow);
-router.get('/sectorie-show-by-id/:id', sectorieController.handleShowById);
-router.put('/sectorie-update', sectorieController.handleUpdate);
+router.post('/sectorie-create', AuthLogin, sectorieController.handleCreate);
+router.delete('/sectorie-delete/:id', AuthLogin, sectorieController.handleRemove);
+router.get('/sectorie-all', AuthLogin, sectorieController.handleShow);
+router.get('/sectorie-show-by-id/:id', AuthLogin, sectorieController.handleShowById);
+router.put('/sectorie-update', AuthLogin, sectorieController.handleUpdate);
 //industry
-router.post('/industry-create', industryController.handleCreate);
-router.delete('/industry-delete/:id', industryController.handleRemove);
+router.post('/industry-create', AuthLogin, industryController.handleCreate);
+router.delete('/industry-delete/:id', AuthLogin, industryController.handleRemove);
 //crud company
-router.post('/company-create', companyController.handleCreate);
-router.delete('/company-delete/:id', companyController.handleRemove);
-router.get('/company-all', companyController.handleShow);
-router.get('/company-show-by-id/:id', companyController.handleShowById);
-router.put('/company-update', companyController.handleUpdate);
+router.post('/company-create', AuthLogin, companyController.handleCreate);
+router.delete('/company-delete/:id', AuthLogin, companyController.handleRemove);
+router.get('/company-all', AuthLogin, companyController.handleShow);
+router.get('/company-show-by-id/:id', AuthLogin, companyController.handleShowById);
+router.put('/company-update', AuthLogin, companyController.handleUpdate);
 
 export { router }
