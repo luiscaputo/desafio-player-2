@@ -11,7 +11,7 @@ const app = express()
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(express.json());
-app.use(AuthLogin);
+//app.use(AuthLogin);
 app.use("/v1", router);
 app.use(router);
 
