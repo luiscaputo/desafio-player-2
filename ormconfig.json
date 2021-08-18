@@ -1,8 +1,9 @@
 {
   "type": "mysql",
-  "host": "localhost",
-  "username": "root",
-  "password": "",
+  "host": "mysql-45535-0.cloudclusters.net",
+  "port": "18342",
+  "username": "admin",
+  "password": "f6SPehsB",
   "database": "desafioPlayer2",
   "synchronize": true,
   "logging": false,
