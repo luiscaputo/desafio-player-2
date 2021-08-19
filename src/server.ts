@@ -1,23 +1,21 @@
-import express, { json, NextFunction, Request, Response } from "express";
-import cors from "cors"
+import express from "express";
+import { Request, Response, NextFunction } from "express";
+import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { router } from "./routes";
-import { AuthLogin } from "./middleweres/auth";
 import swaggerDocs from "./swagger.json";
 import "./database";
 
-
 const app = express()
-const access = cors();
+const Cors = cors();
 
-app.use((request: Request, response: Response, next:NextFunction) => {
-    response.header("Access-control-Allow-Origin", "https://desafio-player-2.herokuapp.com/");
-    response.header("Access-control-Allow-Methods", "GET, POST, PUT, DELETE");
-    response.header("Access-control-Allow-Headers", "X-PINGOTHER, Content-Type, Authorization");
-    app.use(cors());
-    next;
-
-})
+app.use((request: Request, response:Response, next: NextFunction) => {
+  response.header("Access-Control-Allow-Origin", "https://desafio-player-2.herokuapp.com/");
+  response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  response.header("Access-Control-Allow-Headers", "X-PINGOTHER, Content-Type, Authorization")
+  app.use(cors());
+  next();
+}); 
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
