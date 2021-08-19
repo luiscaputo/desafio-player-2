@@ -16,4 +16,4 @@ EXPOSE 9005
 
 ENTRYPOINT ["node"]
 
-CMD ["server.js"]
+CMD ["server.ts"]
